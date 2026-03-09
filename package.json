@@ -1,0 +1,8 @@
+{
+  "name": "agicapital",
+  "version": "1.0.0",
+  "description": "AGI Capital — AI Automation Agency landing page",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  }
+}
