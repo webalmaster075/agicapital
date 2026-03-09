@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-ru="AGI Capital — AI автоматизация для малого бизнеса" data-en="AGI Capital — AI automation for small business">AGI Capital — AI automation for small business</title>
+  <meta name="description" data-ru="AGI Capital — автоматизируем бизнес-процессы с помощью AI и no-code. n8n, Zapier, Make, чат‑боты, интеграции. Быстрый ROI." data-en="AGI Capital — automating business processes with AI and no-code. n8n, Zapier, Make, AI chatbots, CRM integrations. Fast ROI." content="AGI Capital — automating business processes with AI and no-code. n8n, Zapier, Make, AI chatbots, CRM integrations. Fast ROI." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>/* same styles as index.html (omitted for brevity) */</style>
+</head>
+<body>
+  <!-- reuse same HTML body as index.html but default language is English -->
+  <!-- For brevity the full content is identical to index.html; JS will set 'en' on init -->
+</body>
+<script>
+  // Minimal script to redirect to main index and force lang=en by query param
+  // This page exists to ensure /en serves EN immediately
+  (function(){
+    try{ document.documentElement.lang='en'; }catch(e){}
+    // Load the main index content in-place by fetching index.html and replacing body
+    fetch('/index.html').then(r=>r.text()).then(html=>{
+      // Replace language initialization: force setLang('en') by replacing the init block
+      html = html.replace(/setLang\('ru'\);/g, "setLang('en');");
+      document.open(); document.write(html); document.close();
+    }).catch(()=>{});
+  })();
+</script>
+</html>
