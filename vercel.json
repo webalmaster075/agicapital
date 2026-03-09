@@ -6,8 +6,8 @@
     }
   },
   "routes": [
-    { "src": "^/en$", "dest": "/index.html?lang=en" },
-    { "src": "^/en/(.*)", "dest": "/index.html?lang=en" },
+    { "src": "^/en$", "dest": "/en.html" },
+    { "src": "^/en/(.*)", "dest": "/en.html" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
