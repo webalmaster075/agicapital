@@ -1,30 +1,23 @@
 const https = require('https');
 
-function notionRequest(body) {
+function notionRequest(lead) {
   return new Promise((resolve, reject) => {
     const token = process.env.NOTION_TOKEN;
-    const dbId = process.env.NOTION_DB_ID || '31e2800a-52ca-81f0-9252-d08709161927';
-    const data = JSON.stringify({
+    const dbId = process.env.NOTION_LEADS_DB_ID || '31e2800a-52ca-81d7-b3c5-e0009abc0482';
+
+    const body = JSON.stringify({
       parent: { database_id: dbId },
       properties: {
-        Title: { title: [{ text: { content: `${body.name} — ${body.service || 'General'}` } }] },
-        Channel: { select: { name: '📸 Instagram' } },
-        Status: { select: { name: '💡 Idea' } },
-        Notes: {
-          rich_text: [{
-            text: {
-              content: [
-                `Email: ${body.email}`,
-                `Phone: ${body.phone || '—'}`,
-                `Company: ${body.company || '—'}`,
-                `Service: ${body.service || '—'}`,
-                `Message: ${body.message || '—'}`,
-                `Time: ${new Date().toISOString()}`
-              ].join('\n')
-            }
-          }]
-        }
-      }
+        'Имя':      { title:  [{ text: { content: lead.name || '' } }] },
+        'Email':    { email:  lead.email || null },
+        'Телефон':  { phone_number: lead.phone || null },
+        'Компания': { rich_text: [{ text: { content: lead.company || '' } }] },
+        'Услуга':   { select: { name: lead.service || 'General' } },
+        'Статус':   { select: { name: '🆕 Новая' } },
+        'Сообщение':{ rich_text: [{ text: { content: lead.message || '' } }] },
+        'Дата':     { date: { start: new Date().toISOString() } },
+        'Источник': { select: { name: 'Сайт' } },
+      },
     });
 
     const options = {
@@ -35,7 +28,7 @@ function notionRequest(body) {
         'Authorization': `Bearer ${token}`,
         'Notion-Version': '2022-06-28',
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(data),
+        'Content-Length': Buffer.byteLength(body),
       },
     };
 
@@ -47,20 +40,18 @@ function notionRequest(body) {
       });
     });
     req.on('error', reject);
-    req.write(data);
+    req.write(body);
     req.end();
   });
 }
 
 async function sendEmail(lead) {
+  if (!process.env.GMAIL_PASS) return false;
   try {
     const nodemailer = require('nodemailer');
     const transporter = nodemailer.createTransport({
       service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
+      auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_PASS },
     });
     await transporter.sendMail({
       from: `"AGI Capital Leads" <${process.env.GMAIL_USER}>`,
@@ -77,6 +68,7 @@ async function sendEmail(lead) {
           <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold">Сообщение</td><td style="padding:8px;border:1px solid #eee">${lead.message || '—'}</td></tr>
           <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold">Время</td><td style="padding:8px;border:1px solid #eee">${new Date().toISOString()}</td></tr>
         </table>
+        <p style="font-family:sans-serif;margin-top:16px"><a href="https://www.notion.so/31e2800a52ca81d7b3c5e0009abc0482">Открыть базу заявок в Notion →</a></p>
       `,
     });
     return true;
@@ -116,13 +108,8 @@ module.exports = async function handler(req, res) {
   }
 
   // 2. Email
-  if (process.env.GMAIL_PASS) {
-    const ok = await sendEmail(lead);
-    if (!ok) warnings.push('email_failed');
-  } else {
-    console.warn('GMAIL_PASS not set, skipping email');
-    warnings.push('email_skipped: GMAIL_PASS not configured');
-  }
+  const emailOk = await sendEmail(lead);
+  if (!emailOk && process.env.GMAIL_PASS) warnings.push('email_failed');
 
   return res.status(200).json({ success: true, warnings });
 };
