@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AGI Capital — AI автоматизация для малого бизнеса</title>
+  <meta name="description" content="AGI Capital — автоматизируем бизнес-процессы с помощью AI и no-code. n8n, Zapier, Make, чат‑боты, интеграции. Быстрый ROI." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070712;--card:#0f1324;--muted:#9aa3bf;--text:#eef2ff;--accent1:#6c63ff;--accent2:#00d4ff;--grad:linear-gradient(135deg,#6c63ff,#00d4ff);--radius:14px}
+    *{box-sizing:border-box}body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .navlinks{display:flex;gap:16px;align-items:center}
+    .navlinks a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--grad);padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700}
+    header.hero{padding:70px 0 24px;text-align:center}
+    h1{font-size:clamp(28px,5vw,48px);margin:8px 0}
+    p.lead{color:var(--muted);max-width:820px;margin:0 auto 18px}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+    .btn{padding:12px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+    .primary{background:var(--grad);color:#fff;border:none}
+
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:10px}
+    .stat{padding:12px;text-align:center}
+    .stat .n{font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .section{padding:40px 0}
+    .section .title{font-size:20px;font-weight:800;margin-bottom:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .18s,box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6);border-color:rgba(108,99,255,0.12)}
+    .price{display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(108,99,255,0.06);color:var(--accent2);font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+
+    .section-tag{display:inline-block;background:rgba(108,99,255,0.06);border:1px solid rgba(108,99,255,0.08);color:var(--accent1);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    .section-sub{color:var(--muted);max-width:760px;margin:12px auto 18px}
+
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .plan{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .plan.pop{border-color:rgba(108,99,255,0.14);box-shadow:0 12px 30px rgba(108,99,255,0.04)}
+    .pprice{font-weight:900;font-size:26px}
+
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{background:#0b1224;border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px}
+    button.send{background:var(--grad);color:#fff;padding:12px;border-radius:10px;border:none;font-weight:700}
+    .note{font-size:13px;color:var(--muted)}
+    .success{display:none;padding:12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.12);border-radius:8px;color:var(--accent2);font-weight:700}
+
+    .market-list{list-style:none;padding-left:0}
+    .market-list li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+
+    .lang-toggle{display:flex;gap:6px}
+    .lang-toggle button{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+    .lang-toggle button.active{background:var(--grad);color:#fff;border-color:transparent}
+
+    .sticky-cta{display:none;position:fixed;left:12px;right:12px;bottom:18px;background:var(--grad);color:#fff;padding:12px;border-radius:12px;z-index:999;box-shadow:0 12px 30px rgba(108,99,255,0.2);justify-content:center;align-items:center}
+
+    footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
+
+    @media(max-width:880px){.stats{grid-template-columns:1fr}.contact{grid-template-columns:1fr}.navlinks{display:none}.hamburger{display:flex}.sticky-cta{display:flex}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <div style="display:flex;align-items:center;gap:18px">
+        <div class="logo">AGI Capital</div>
+        <div class="lang-toggle" style="margin-left:6px">
+          <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+          <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+
+      <div class="navlinks">
+        <a href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+        <a href="#how" data-ru="Как работаем" data-en="How it works">Как работаем</a>
+        <a href="#results" data-ru="Результаты" data-en="Results">Результаты</a>
+        <a href="#pricing" data-ru="Цены" data-en="Pricing">Цены</a>
+        <a class="cta" href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-menu" style="display:none">
+      <a href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+      <a href="#how" data-ru="Как работаем" data-en="How it works">Как работаем</a>
+      <a href="#results" data-ru="Результаты" data-en="Results">Результаты</a>
+      <a href="#pricing" data-ru="Цены" data-en="Pricing">Цены</a>
+      <a href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+    </div>
+
+    <header class="hero" id="hero">
+      <h1><span class="gradient-text" data-ru="Автоматизируем ваш бизнес с помощью AI" data-en="We automate your business with AI">Автоматизируем ваш бизнес с помощью AI</span></h1>
+      <p class="lead" data-ru="Экономим время и деньги: настраиваем n8n/Zapier/Make, внедряем чат‑боты, интегрируем CRM. Быстрый запуск — первые результаты за 7–14 дней." data-en="We save time and money: n8n/Zapier/Make setups, AI chatbots, CRM integrations. Quick launch — first results in 7–14 days.">Экономим время и деньги: настраиваем n8n/Zapier/Make, внедряем чат‑боты, интегрируем CRM. Быстрый запуск — первые результаты за 7–14 дней.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+        <a class="btn" href="#services" data-ru="Посмотреть услуги" data-en="See services">Посмотреть услуги</a>
+      </div>
+
+      <div class="stats" id="stats">
+        <div class="stat"><div class="n" data-ru="40+ ч" data-en="40+ hrs">40+ ч</div><div class="small" data-ru="Экономия в месяц (сред.)" data-en="Saved per month (avg)">Экономия в месяц (сред.)</div></div>
+        <div class="stat"><div class="n" data-ru="$2,500+" data-en="$2,500+">$2,500+</div><div class="small" data-ru="Экономия / клиент" data-en="Saved per client">Экономия / клиент</div></div>
+        <div class="stat"><div class="n" data-ru="7 дней" data-en="7 days">7 дней</div><div class="small" data-ru="Среднее время запуска" data-en="Avg setup time">Среднее время запуска</div></div>
+      </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Услуги" data-en="Services">Услуги</div>
+        <div class="title" style="margin-top:12px" data-ru="Что мы делаем" data-en="What we do">Что мы делаем</div>
+        <p class="section-sub" data-ru="Конкретные автоматизации под ваш бизнес: быстрый запуск, прозрачные цены и поддержка." data-en="Concrete automations for your business: fast launch, clear pricing and support.">Конкретные автоматизации под ваш бизнес: быстрый запуск, прозрачные цены и поддержка.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="🤖 n8n / Make / Zapier автоматизация" data-en="🤖 n8n / Make / Zapier automation">🤖 n8n / Make / Zapier автоматизация</h3><div class="price" data-ru="от $300" data-en="from $300">от $300</div></div>
+          <p class="small" data-ru="Настройка сценариев, интеграция CRM, обработка лидов и триггеров." data-en="Workflow setup, CRM sync, lead handling and triggers.">Настройка сценариев, интеграция CRM, обработка лидов и триггеров.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="💬 AI чат‑боты и агенты" data-en="💬 AI chatbots & agents">💬 AI чат‑боты и агенты</h3><div class="price" data-ru="от $200" data-en="from $200">от $200</div></div>
+          <p class="small" data-ru="Боты для сайта, Telegram, WhatsApp. RAG (поиск по документам) и интеграция с CRM." data-en="Bots for web, Telegram, WhatsApp. RAG and CRM integrations.">Боты для сайта, Telegram, WhatsApp. RAG (поиск по документам) и интеграция с CRM.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="📊 CRM интеграции" data-en="📊 CRM integrations">📊 CRM интеграции</h3><div class="price" data-ru="от $250" data-en="from $250">от $250</div></div>
+          <p class="small" data-ru="Связь форм, продаж и данных: HubSpot, Pipedrive, Bitrix, Airtable." data-en="Connecting forms, sales and data: HubSpot, Pipedrive, Bitrix, Airtable.">Связь форм, продаж и данных: HubSpot, Pipedrive, Bitrix, Airtable.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="📱 Telegram / Viber боты" data-en="📱 Telegram / Viber bots">📱 Telegram / Viber боты</h3><div class="price" data-ru="от $150" data-en="from $150">от $150</div></div>
+          <p class="small" data-ru="Оповещения, лид‑магниты, автоматические ответы и логика маршрутизации." data-en="Notifications, lead magnets, auto replies and routing logic.">Оповещения, лид‑магниты, автоматические ответы и логика маршрутизации.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="📧 Email автоматизация" data-en="📧 Email automation">📧 Email автоматизация</h3><div class="price" data-ru="от $180" data-en="from $180">от $180</div></div>
+          <p class="small" data-ru="Серии писем, триггерные рассылки, интеграция с платежами и CRM." data-en="Email sequences, trigger campaigns, payments & CRM integration.">Серии писем, триггерные рассылки, интеграция с платежами и CRM.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3 data-ru="🔗 API интеграции" data-en="🔗 API integrations">🔗 API интеграции</h3><div class="price" data-ru="от $200" data-en="from $200">от $200</div></div>
+          <p class="small" data-ru="Кастомные коннекторы, Webhooks, ETL и обмен данными между сервисами." data-en="Custom connectors, webhooks, ETL and data sync between services.">Кастомные коннекторы, Webhooks, ETL и обмен данными между сервисами.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET: Fiverr / Upwork summary -->
+    <section id="market" class="section">
+      <div style="text-align:center;margin-bottom:12px">
+        <div class="section-tag" data-ru="Рынок" data-en="Market">Рынок</div>
+        <div class="title" style="margin-top:12px" data-ru="Популярные услуги и ориентировочные цены" data-en="Popular services & typical prices">Популярные услуги и ориентировочные цены</div>
+        <p class="section-sub" data-ru="Мы изучили актуальные объявления на Fiverr и Upwork: что чаще всего продают и по каким ценам." data-en="We analyzed Fiverr & Upwork to see which automations sell and at what prices.">Мы изучили актуальные объявления на Fiverr и Upwork: что чаще всего продают и по каким ценам.</p>
+      </div>
+
+      <p class="market-note small" data-ru="Коротко: востребованы Zapier/Make/n8n автоматизации, чат‑боты, CRM‑интеграции, миграция сценариев и голосовые агенты." data-en="Short summary: Zapier/Make/n8n automations, chatbots, CRM integrations, workflow migrations and voice agents are in demand.">Коротко: востребованы Zapier/Make/n8n автоматизации, чат‑боты, CRM‑интеграции, миграция сценариев и голосовые агенты.</p>
+
+      <ul class="market-list">
+        <li data-ru="Автоматизация (Zapier/Make/n8n): простые задачи $50–$150 на Fiverr; проекты $300–$1,000; крупные интеграции $1,000–$5,000+ на Upwork." data-en="Automation (Zapier/Make/n8n): simple gigs $50–$150 on Fiverr; projects $300–$1,000; large integrations $1,000–$5,000+ on Upwork.">Автоматизация (Zapier/Make/n8n): простые задачи $50–$150 на Fiverr; проекты $300–$1,000; крупные интеграции $1,000–$5,000+ на Upwork.</li>
+        <li data-ru="AI чат‑боты: от $200 на Fiverr; на Upwork проекты $300–$1,500+ в зависимости от RAG/голосовой интеграции." data-en="AI chatbots: from $200 on Fiverr; on Upwork $300–$1,500+ depending on RAG/voice integration.">AI чат‑боты: от $200 на Fiverr; на Upwork проекты $300–$1,500+ в зависимости от RAG/голосовой интеграции.</li>
+        <li data-ru="CRM интеграции: типично $250–$1,000; миграции и кастомные коннекторы $1,000–$3,000." data-en="CRM integrations: typically $250–$1,000; migrations and custom connectors $1,000–$3,000.">CRM интеграции: типично $250–$1,000; миграции и кастомные коннекторы $1,000–$3,000.</li>
+        <li data-ru="Голосовые агенты / TTS: от $300; сложные голосовые роботы $1,500+." data-en="Voice agents / TTS: from $300; complex voice bots $1,500+.">Голосовые агенты / TTS: от $300; сложные голосовые роботы $1,500+.</li>
+      </ul>
+
+      <p class="small" style="margin-top:10px" data-ru="Источник: публичные объявления и топ‑гига на Fiverr/Upwork, обзоры Make/Zapier/n8n (2024–2026)." data-en="Source: public listings and top gigs on Fiverr/Upwork, platform comparisons (2024–2026).">Источник: публичные объявления и топ‑гига на Fiverr/Upwork, обзоры Make/Zapier/n8n (2024–2026).</p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Процесс" data-en="Process">Процесс</div>
+        <div class="title" data-ru="Как мы работаем" data-en="How we work">Как мы работаем</div>
+        <p class="section-sub" data-ru="Прозрачный процесс: аудит → решение → разработка → поддержка." data-en="Transparent process: audit → solution → build → support.">Прозрачный процесс: аудит → решение → разработка → поддержка.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h4 data-ru="01 — Аудит (бесплатно)" data-en="01 — Audit (free)">01 — Аудит (бесплатно)</h4><p class="small" data-ru="Быстрый разбор процессов — где тратятся часы и деньги." data-en="Quick process review — where hours and money are lost.">Быстрый разбор процессов — где тратятся часы и деньги.</p></div>
+        <div class="card"><h4 data-ru="02 — Решение" data-en="02 — Solution">02 — Решение</h4><p class="small" data-ru="План автоматизации с оценкой экономии и сроков." data-en="Automation plan with expected savings and timelines.">План автоматизации с оценкой экономии и сроков.</p></div>
+        <div class="card"><h4 data-ru="03 — Разработка" data-en="03 — Development">03 — Разработка</h4><p class="small" data-ru="Сборка сценариев, тестирование, интеграция и контроль качества." data-en="Build workflows, test, integrate, QA.">Сборка сценариев, тестирование, интеграция и контроль качества.</p></div>
+        <div class="card"><h4 data-ru="04 — Поддержка" data-en="04 — Support">04 — Поддержка</h4><p class="small" data-ru="Мониторинг, правки и расширения по запросу." data-en="Monitoring, tweaks and extensions on demand.">Мониторинг, правки и расширения по запросу.</p></div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Результаты" data-en="Results">Результаты</div>
+        <div class="title" data-ru="Чего мы добиваемся" data-en="What we achieve">Чего мы добиваемся</div>
+        <p class="section-sub" data-ru="Реальные KPI, на которые ориентируемся при каждом проекте." data-en="Real KPIs we target in every project.">Реальные KPI, на которые ориентируемся при каждом проекте.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div style="font-weight:900;font-size:28px;color:var(--accent2)" data-ru="40+ ч" data-en="40+ hrs">40+ ч</div><p class="small" data-ru="Экономия времени в месяц (в среднем)" data-en="Saved time per month (avg)">Экономия времени в месяц (в среднем)</p></div>
+        <div class="card"><div style="font-weight:900;font-size:28px;color:var(--accent2)" data-ru="3x" data-en="3x">3x</div><p class="small" data-ru="Рост эффективности команды" data-en="Team productivity increase">Рост эффективности команды</p></div>
+        <div class="card"><div style="font-weight:900;font-size:28px;color:var(--accent2)" data-ru="80%" data-en="80%">80%</div><p class="small" data-ru="Рутинных задач можно автоматизировать" data-en="Of routine tasks automatable">Рутинных задач можно автоматизировать</p></div>
+        <div class="card"><div style="font-weight:900;font-size:28px;color:var(--accent2)" data-ru="2 недели" data-en="2 weeks">2 недели</div><p class="small" data-ru="Средний срок до первого экономического эффекта" data-en="Avg time to first ROI">Средний срок до первого экономического эффекта</p></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Цены" data-en="Pricing">Цены</div>
+        <div class="title" data-ru="Прозрачные пакеты" data-en="Clear packages">Прозрачные пакеты</div>
+        <p class="section-sub" data-ru="Быстрый старт с понятными пакетами — выберите под ваш бюджет." data-en="Quick start with clear packages — choose by budget.">Быстрый старт с понятными пакетами — выберите под ваш бюджет.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan">
+          <div style="font-weight:800" data-ru="Starter" data-en="Starter">Starter</div>
+          <div class="pprice">$299</div>
+          <div class="pb" data-ru="1 автоматизация • Быстрая настройка • 30‑д поддержка" data-en="1 automation • Quick setup • 30d support">1 автоматизация • Быстрая настройка • 30‑д поддержка</div>
+        </div>
+        <div class="plan pop">
+          <div style="font-weight:800">Business <span style="background:var(--grad);padding:6px 8px;border-radius:8px;color:#fff;font-weight:800;margin-left:8px;font-size:12px" data-ru="Популярно" data-en="Popular">Популярно</span></div>
+          <div class="pprice">$799</div>
+          <div class="pb" data-ru="3 автоматизации • CRM интеграция • 90‑д поддержка • приоритет" data-en="3 automations • CRM integration • 90d support • priority">3 автоматизации • CRM интеграция • 90‑д поддержка • приоритет</div>
+        </div>
+        <div class="plan">
+          <div style="font-weight:800" data-ru="Pro" data-en="Pro">Pro</div>
+          <div class="pprice">$1,499</div>
+          <div class="pb" data-ru="Неограниченно • Выделенный менеджер • 12‑м поддержка" data-en="Unlimited • Dedicated manager • 12m support">Неограниченно • Выделенный менеджер • 12‑м поддержка</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Связаться" data-en="Contact">Связаться</div>
+        <div class="title" data-ru="Закажите бесплатный аудит" data-en="Request a free audit">Закажите бесплатный аудит</div>
+        <p class="section-sub" data-ru="Оставьте заявку — мы свяжемся и подготовим быстрый план автоматизации." data-en="Leave a request — we will contact you with a quick automation plan.">Оставьте заявку — мы свяжемся и подготовим быстрый план автоматизации.</p>
+      </div>
+
+      <div class="contact">
+        <div>
+          <h3 data-ru="Почему AGI Capital" data-en="Why AGI Capital">Почему AGI Capital</h3>
+          <p class="small" data-ru="Быстрое внедрение, опытные инженеры, честные цены. Нужна NDA — подпишем." data-en="Fast deployment, experienced engineers, fair pricing. NDA on request.">Быстрое внедрение, опытные инженеры, честные цены. Нужна NDA — подпишем.</p>
+          <div style="margin-top:12px">
+            <div style="margin-bottom:8px"><strong data-ru="✓ Бесплатный аудит" data-en="✓ Free audit">✓ Бесплатный аудит</strong></div>
+            <div style="margin-bottom:8px"><strong data-ru="✓ Ответ в 24 часа" data-en="✓ Reply within 24h">✓ Ответ в 24 часа</strong></div>
+            <div style="margin-bottom:8px"><strong data-ru="✓ Гарантия работоспособности" data-en="✓ Working guarantee">✓ Гарантия работоспособности</strong></div>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <input id="name" placeholder="Имя" data-ru-placeholder="Имя" data-en-placeholder="Name" required>
+          <input id="company" placeholder="Компания" data-ru-placeholder="Компания" data-en-placeholder="Company">
+          <input id="email" placeholder="Email" data-ru-placeholder="Email" data-en-placeholder="Email" type="email" required>
+          <input id="phone" placeholder="Телефон" data-ru-placeholder="Телефон" data-en-placeholder="Phone">
+          <select id="service" aria-label="Service">
+            <option value="n8n" data-ru="n8n / Make / Zapier" data-en="n8n / Make / Zapier">n8n / Make / Zapier</option>
+            <option value="chatbot" data-ru="AI чат‑боты" data-en="AI chatbots">AI чат‑боты</option>
+            <option value="crm" data-ru="CRM интеграции" data-en="CRM integrations">CRM интеграции</option>
+            <option value="api" data-ru="API интеграции" data-en="API integrations">API интеграции</option>
+          </select>
+          <textarea id="msg" placeholder="Коротко опишите задачу" data-ru-placeholder="Коротко опишите задачу" data-en-placeholder="Briefly describe your task" rows="4"></textarea>
+
+          <div style="display:flex;gap:8px;align-items:center">
+            <button type="submit" class="send" data-ru="Отправить заявку" data-en="Send request">Отправить заявку</button>
+            <div id="formNote" class="note"></div>
+          </div>
+          <div id="success" class="success" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div style="font-weight:700">AGI Capital</div>
+      <div class="small" style="margin-top:6px">© 2026 AGI Capital — AI Automation for Small Business</div>
+    </footer>
+  </div>
+
+  <div class="sticky-cta" id="stickyCta" style="display:none"><a href="#contact" style="color:#fff;text-decoration:none;font-weight:800">Получить консультацию / Get a free call</a></div>
+
+  <script>
+    // Language toggle: swap innerText / placeholders using data-ru / data-en attributes
+    function setLang(lang){
+      document.querySelectorAll('[data-ru]').forEach(el=>{
+        if(lang==='ru') el.innerText = el.getAttribute('data-ru'); else el.innerText = el.getAttribute('data-en') || el.getAttribute('data-ru');
+      });
+      document.querySelectorAll('[data-ru-placeholder]').forEach(el=>{
+        if(lang==='ru') el.placeholder = el.getAttribute('data-ru-placeholder'); else el.placeholder = el.getAttribute('data-en-placeholder') || el.getAttribute('data-ru-placeholder');
+      });
+      // update language buttons
+      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+      document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    }
+    // Initialize
+    setLang('ru');
+
+    // Mobile menu toggle
+    function toggleMobile(){
+      var m = document.getElementById('mobileMenu');
+      m.style.display = (m.style.display==='flex')? 'none':'flex';
+    }
+
+    // Sticky CTA on small screens
+    function checkScroll(){
+      if(window.innerWidth<=880){
+        var y = window.scrollY || window.pageYOffset;
+        var show = y>300;
+        document.getElementById('stickyCta').style.display = show? 'flex':'none';
+      }
+    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    checkScroll();
+
+    // Form handler (no backend) — logs lead. Replace with fetch to your endpoint if needed.
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = {
+        name: document.getElementById('name').value,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        msg: document.getElementById('msg').value,
+        ts: new Date().toISOString()
+      };
+      console.log('lead:', data);
+      // visual feedback
+      var succ = document.getElementById('success');
+      succ.innerText = (document.getElementById('btn-ru').classList.contains('active'))? 'Заявка принята. Мы свяжемся в течение 24 часов.' : 'Request received. We will contact you within 24 hours.';
+      succ.style.display = 'block';
+      // clear
+      this.reset();
+      setTimeout(()=>succ.style.display='none',8000);
+    });
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        var href = this.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          var target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
