@@ -4,25 +4,171 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title data-ru="AGI Capital — AI автоматизация для малого бизнеса" data-en="AGI Capital — AI automation for small business">AGI Capital — AI automation for small business</title>
-  <meta name="description" data-ru="AGI Capital — автоматизируем бизнес-процессы с помощью AI и no-code. n8n, Zapier, Make, чат‑боты, интеграции. Быстрый ROI." data-en="AGI Capital — automating business processes with AI and no-code. n8n, Zapier, Make, AI chatbots, CRM integrations. Fast ROI." content="AGI Capital — automating business processes with AI and no-code. n8n, Zapier, Make, AI chatbots, CRM integrations. Fast ROI." />
+  <meta name="description" data-ru="AGI Capital — автоматизируем бизнес-процессы с помощью AI и no-code. n8n, Zapier, Make, чат‑боты, интеграции. Быстрый ROI." data-en="AGI Capital — automating business processes with AI and no-code. n8n, Zapier, Make, AI chatbots, CRM integrations. Fast ROI." content="AGI Capital — автоматизируем бизнес-процессы с помощью AI и no-code. n8n, Zapier, Make, чат‑боты, интеграции. Быстрый ROI." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>/* same styles as index.html (omitted for brevity) */</style>
+  <style>
+    :root{--bg:#070712;--card:#0f1324;--muted:#9aa3bf;--text:#eef2ff;--accent1:#6c63ff;--accent2:#00d4ff;--grad:linear-gradient(135deg,#6c63ff,#00d4ff);--radius:14px}
+    *{box-sizing:border-box}body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .navlinks{display:flex;gap:16px;align-items:center}
+    .navlinks a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--grad);padding:10px 14px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700}
+    header.hero{Padding:70px 0 24px;text-align:center}
+    h1{font-size:clamp(28px,5vw,48px);margin:8px 0}
+    p.lead{color:var(--muted);max-width:820px;margin:0 auto 18px}
+    .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+    .btn{padding:12px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+    .primary{background:var(--grad);color:#fff;border:none}
+
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:10px}
+    .stat{padding:12px;text-align:center}
+    .stat .n{font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .section{padding:40px 0}
+    .section .title{font-size:20px;font-weight:800;margin-bottom:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .18s,box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6);border-color:rgba(108,99,255,0.12)}
+    .price{display:inline-block;padding:6px 10px;border-radius:8px;background:rgba(108,99,255,0.06);color:var(--accent2);font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+
+    .section-tag{display:inline-block;background:rgba(108,99,255,0.06);border:1px solid rgba(108,99,255,0.08);color:var(--accent1);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    .section-sub{color:var(--muted);max-width:760px;margin:12px auto 18px}
+
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .plan{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .plan.pop{border-color:rgba(108,99,255,0.14);box-shadow:0 12px 30px rgba(108,99,255,0.04)}
+    .pprice{font-weight:900;font-size:26px}
+
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{background:#0b1224;border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:10px;border-radius:8px}
+    button.send{background:var(--grad);color:#fff;padding:12px;border-radius:10px;border:none;font-weight:700}
+    .note{font-size:13px;color:var(--muted)}
+    .success{display:none;padding:12px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.12);border-radius:8px;color:var(--accent2);font-weight:700}
+
+    .market-list{list-style:none;padding-left:0}
+    .market-list li{padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+
+    .lang-toggle{display:flex;gap:6px}
+    .lang-toggle button{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+    .lang-toggle button.active{background:var(--grad);color:#fff;border-color:transparent}
+
+    .sticky-cta{display:none;position:fixed;left:12px;right:12px;bottom:18px;background:var(--grad);color:#fff;padding:12px;border-radius:12px;z-index:999;box-shadow:0 12px 30px rgba(108,99,255,0.2);justify-content:center;align-items:center}
+
+    footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
+
+    @media(max-width:880px){.stats{grid-template-columns:1fr}.contact{grid-template-columns:1fr}.navlinks{display:none}.hamburger{display:flex}.sticky-cta{display:flex}}
+  </style>
 </head>
 <body>
-  <!-- reuse same HTML body as index.html but default language is English -->
-  <!-- For brevity the full content is identical to index.html; JS will set 'en' on init -->
+  <div class="wrap">
+    <nav>
+      <div style="display:flex;align-items:center;gap:18px">
+        <div class="logo">AGI Capital</div>
+        <div class="lang-toggle" style="margin-left:6px">
+          <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+          <button id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+
+      <div class="navlinks">
+        <a href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+        <a href="#how" data-ru="Как работаем" data-en="How it works">Как работаем</a>
+        <a href="#results" data-ru="Результаты" data-en="Results">Результаты</a>
+        <a href="#pricing" data-ru="Цены" data-en="Pricing">Цены</a>
+        <a class="cta" href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-menu" style="display:none">
+      <a href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+      <a href="#how" data-ru="Как работаем" data-en="How it works">Как работаем</a>
+      <a href="#results" data-ru="Результаты" data-en="Results">Результаты</a>
+      <a href="#pricing" data-ru="Цены" data-en="Pricing">Цены</a>
+      <a href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+    </div>
+
+    <header class="hero" id="hero">
+      <h1><span class="gradient-text" data-ru="Автоматизируем ваш бизнес с помощью AI" data-en="We automate your business with AI">Автоматизируем ваш бизнес с помощью AI</span></h1>
+      <p class="lead" data-ru="Экономим время и деньги: настраиваем n8n/Zapier/Make, внедряем чат‑боты, интегрируем CRM. Быстрый запуск — первые результаты за 7–14 дней." data-en="We save time and money: n8n/Zapier/Make setups, AI chatbots, CRM integrations. Quick launch — first results in 7–14 days.">Экономим время и деньги: настраиваем n8n/Zapier/Make, внедряем чат‑боты, интегрируем CRM. Быстрый запуск — первые результаты за 7–14 дней.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact" data-ru="Получить консультацию" data-en="Get a free call">Получить консультацию</a>
+        <a class="btn" href="#services" data-ru="Посмотреть услуги" data-en="See services">Посмотреть услуги</a>
+      </div>
+
+      <div class="stats" id="stats">
+        <div class="stat"><div class="n" data-ru="40+ ч" data-en="40+ hrs">40+ ч</div><div class="small" data-ru="Экономия в месяц (сред.)" data-en="Saved per month (avg)">Экономия в месяц (сред.)</div></div>
+        <div class="stat"><div class="n" data-ru="$2,500+" data-en="$2,500+">$2,500+</div><div class="small" data-ru="Экономия / клиент" data-en="Saved per client">Экономия / клиент</div></div>
+        <div class="stat"><div class="n" data-ru="7 дней" data-en="7 days">7 дней</div><div class="small" data-ru="Среднее время запуска" data-en="Avg setup time">Среднее время запуска</div></div>
+      </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div style="text-align:center;margin-bottom:18px">
+        <div class="section-tag" data-ru="Услуги" data-en="Services">Услуги</div>
+        <div class="title" style="margin-top:12px" data-ru="Что мы делаем" data-en="What we do">Что мы делаем</div>
+        <p class="section-sub" data-ru="Конкретные автоматизации под ваш бизнес: быстрый запуск, прозрачные цены и поддержка." data-en="Concrete automations for your business: fast launch, clear pricing and support.">Конкретные автоматизации под ваш бизнес: быстрый запуск, прозрачные цены и поддержка.</p>
+      </div>
+
+... (file continues) ...
+  <script>
+    // Language toggle: swap innerText / placeholders using data-ru / data-en attributes
+    function setLang(lang){
+      document.querySelectorAll('[data-ru]').forEach(el=>{
+        if(lang==='ru') el.innerText = el.getAttribute('data-ru'); else el.innerText = el.getAttribute('data-en') || el.getAttribute('data-ru');
+      });
+      document.querySelectorAll('[data-ru-placeholder]').forEach(el=>{
+        if(lang==='ru') el.placeholder = el.getAttribute('data-ru-placeholder'); else el.placeholder = el.getAttribute('data-en-placeholder') || el.getAttribute('data-ru-placeholder');
+      });
+      // update language buttons
+      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+      document.getElementById('btn-en').classList.toggle('active', lang==='en');
+      // set html/lang and update title/meta
+      try{
+        document.documentElement.lang = (lang==='ru')? 'ru':'en';
+        var t = document.querySelector('title');
+        if(t && t.getAttribute('data-'+lang)) t.innerText = t.getAttribute('data-'+lang);
+        var m = document.querySelector('meta[name="description"]');
+        if(m && m.getAttribute('data-'+lang)) m.setAttribute('content', m.getAttribute('data-'+lang));
+      }catch(e){}
+    }
+    // Initialize based on URL (/en -> English)
+    (function(){
+      var defaultLang = 'ru';
+      try {
+        var p = window.location.pathname || '';
+        var qs = window.location.search || '';
+        if (p === '/en' || p.startsWith('/en/') || new URLSearchParams(qs).get('lang') === 'en') defaultLang = 'en';
+      } catch(e){}
+      setLang(defaultLang);
+    })();
+
+    // Mobile menu toggle
+    function toggleMobile(){
+      var m = document.getElementById('mobileMenu');
+      m.style.display = (m.style.display==='flex')? 'none':'flex';
+    }
+
+    // Sticky CTA on small screens
+    function checkScroll(){
+      if(window.innerWidth<=880){
+        var y = window.scrollY || window.pageYOffset;
+        var show = y>300;
+        document.getElementById('stickyCta').style.display = show? 'flex':'none';
+      }
+    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+    checkScroll();
+
+... (file continues) ...
+  </script>
 </body>
-<script>
-  // Minimal script to redirect to main index and force lang=en by query param
-  // This page exists to ensure /en serves EN immediately
-  (function(){
-    try{ document.documentElement.lang='en'; }catch(e){}
-    // Load the main index content in-place by fetching index.html and replacing body
-    fetch('/index.html').then(r=>r.text()).then(html=>{
-      // Replace language initialization: force setLang('en') by replacing the init block
-      html = html.replace(/setLang\('ru'\);/g, "setLang('en');");
-      document.open(); document.write(html); document.close();
-    }).catch(()=>{});
-  })();
-</script>
 </html>
